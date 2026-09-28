@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Attendance Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-user-graduate"></i> TrackMate
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h2>Welcome, Academic Achiever</h2>
+                    <p>Monitor and optimize your attendance across all subjects.</p>
+                </div>
+                <!-- Theme Toggle Switch -->
+                <div class="theme-toggle-container">
+                    <span id="theme-label"><i class="fas fa-sun"></i> Light Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </header>
+
+            <!-- ANALYTICS SECTION -->
+            <section class="main-analytics">
+                <div class="card chart-card">
+                    <h3>Overall Academic Health</h3>
+                    <canvas id="overallRadarChart"></canvas>
+                </div>
+                <div class="card stats-overview">
+                    <div class="stat-item safe">
+                        <i class="fas fa-check-circle"></i>
+                        <h4 id="safe-count">0</h4>
+                        <p>Safe Subjects</p>
+                    </div>
+                    <div class="stat-item critical">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4 id="critical-count">0</h4>
+                        <p>Critical Subjects</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUBJECT LIST SECTION -->
+            <section class="subjects-section">
+                <div class="card add-subject-card">
+                    <h3><i class="fas fa-plus-circle"></i> Add New Subject</h3>
+                    <form id="add-subject-form">
+                        <div class="form-row">
+                            <input type="text" id="subject-name" placeholder="Subject (e.g., Computer Networks)" required>
+                            <input type="number" id="attended-classes" placeholder="Attended" min="0" required>
+                            <input type="number" id="total-classes" placeholder="Total Held" min="1" required>
+                            <input type="number" id="target-percent" placeholder="Target %" value="75" min="1" max="100" required>
+                            <button type="submit" id="add-btn">Add Subject</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="subjects-grid" class="grid-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
